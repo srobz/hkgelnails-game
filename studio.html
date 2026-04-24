@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nail Studio - Holdyn's</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="studio-scene" id="scene">
+    <!-- Background and desk layers -->
+    <img src="assets/office_bkg.JPG" alt="Studio" class="layer-bg" id="studio-bg">
+
+    <!-- Character layers injected by JS -->
+
+    <img src="assets/desk_bkg.JPG" alt="Desk" class="layer-desk" id="desk-fg">
+
+    <!-- Nail swatches sitting on the desk -->
+    <div class="swatch-tray" id="swatch-tray"></div>
+
+    <!-- Controls -->
+    <img src="assets/logo.png" alt="Logo" class="logo" onclick="window.location.href='index.html'" onerror="this.style.display='none';">
+    <button class="btn back-btn" onclick="window.location.href='character-select.html'">BACK</button>
+    <button class="btn start-btn" onclick="window.location.href='index.html'">HOME</button>
+    <button class="btn save-btn" onclick="saveStory()">SAVE STORY</button>
+  </div>
+
+  <script src="js/game.js"></script>
+  <script>
+    window.addEventListener('load', initStudio);
+  </script>
+
+  <div class="global-footer">
+    made with love for Holdyn ⋆ ˚｡⋆୨୧˚  <a href="#" target="_blank" style="color: #ffcedc; text-decoration: underline;">follow Holdyn on IG</a>
+  </div>
+</body>
+</html>

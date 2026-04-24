@@ -2,193 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dress Up Game</title>
-  <style>
-    @font-face {
-      font-family: 'NeuePixelSans';
-      src: url('NeuePixelSans.ttf') format('truetype');
-    }
-    
-    body {
-      margin: 0;
-      padding: 0;
-      background: #074244;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .background {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      z-index: 1;
-    }
-    
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-    }
-    
-    .logo {
-      width: 350px;
-      margin-bottom: 20px;
-      animation: bounce 1.2s infinite;
-      z-index: 3;
-      position: relative;
-      display: block;
-    }
-    
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-    
-    .continue-btn {
-      width: 220px;
-      cursor: pointer;
-      display: block;
-      z-index: 3;
-      position: relative;
-    }
-    
-    .text-box-container {
-      display: none;
-      align-items: center;
-      gap: 15px;
-      z-index: 3;
-      position: relative;
-    }
-    
-    .text-box {
-      background: #ffe7c6;
-      border: none;
-      border-radius: 0px;
-      padding: 12px 20px;
-      font-family: 'NeuePixelSans', sans-serif;
-      font-size: 16px;
-      color: black;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    .play-btn {
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      display: block;
-      animation: wiggle 0.5s infinite;
-    }
-    
-    @keyframes wiggle {
-      0%, 100% {
-        transform: rotate(0deg);
-      }
-      25% {
-        transform: rotate(-5deg);
-      }
-      75% {
-        transform: rotate(5deg);
-      }
-    }
-  </style>
+  <title>Holdyn's Nail Studio</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <img src="main.png" alt="Background" class="background">
-  <div class="container">
-    <img src="logo.png" alt="Logo" class="logo">
-    <img src="continue.png" alt="Click to Continue" class="continue-btn" onclick="showTextBox()">
+  <img src="assets/main_bkg.png" alt="Studio" class="bg-img" id="bg-main">
+
+  <div class="center-flex">
+    <img src="assets/logo.png" alt="Holdyn's Nail Studio" class="welcome-logo" id="logo-main" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';">
+    <div class="logo-fallback" id="logo-fallback" style="display:none;">Holdyn's Nail Studio</div>
+
+    <button class="continue-text-btn" id="continue-btn" onclick="enterStudio()">CLICK TO CONTINUE</button>
+
     <div class="text-box-container" id="textBoxContainer">
-      <div class="text-box" id="textBox">Hi Islander, get ready...</div>
-      <img src="play.png" alt="Play" class="play-btn" onclick="completeMessage()">
+      <div class="text-box" id="textBox">Hey bestie, get ready...</div>
+      <button class="play-text-btn" id="play-btn" onclick="completeMessage()">&#9654;</button>
     </div>
   </div>
-  
+
+  <script src="js/game.js"></script>
   <script>
-    function showTextBox() {
-      document.querySelector('.continue-btn').style.display = 'none';
+    function enterStudio() {
+      playSound('enterStudio');
+      document.getElementById('continue-btn').style.display = 'none';
       document.getElementById('textBoxContainer').style.display = 'flex';
     }
-    
-    function typewriterEffect(prompt) {
-      const textBox = document.getElementById('textBox');
-      const baseText = "Hi Islander, get ready ";
-      textBox.textContent = baseText;
-      
-      let i = 0;
-      
-      function type() {
-        if (i < prompt.length) {
-          textBox.textContent = baseText + prompt.substring(0, i + 1) + "...";
-          i++;
-          setTimeout(type, 50);
-        }
-      }
-      
-      type();
-    }
-    
+
     function completeMessage() {
-      fetch('prompts.csv')
-        .then(response => response.text())
-        .then(data => {
-          const prompts = data.trim().split('\n').filter(line => line.trim() !== '');
-          const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-          typewriterEffect(randomPrompt);
-        })
-        .catch(error => {
-          console.error('Error loading prompts:', error);
-          // Fallback to hardcoded prompts if CSV fails to load
-          const fallbackPrompts = [
-            "for a hot, new, bombshell.",
-            "to meet a bombshell that wants to pull you for a chat.",
-            "to go to soul ties with your crush.",
-            "to have 'a chat' by the dock.",
-            "for a first kiss with your crush.",
-            "for the heart rate challenge",
-            "for a morning debrief on the daybeds.",
-            "for Casa amor!",
-            "for a re-coupling night",
-            "for a waterpark date!",
-            "to twerk with Megan!",
-            "for an impromptu yoga date!",
-            "for a double date."
-          ];
-          const randomPrompt = fallbackPrompts[Math.floor(Math.random() * fallbackPrompts.length)];
-          typewriterEffect(randomPrompt);
-        });
-      
-      // Stop the wiggle animation, change to play button, and change to game navigation
-      const playBtn = document.querySelector('.play-btn');
-      playBtn.style.animation = 'none';
-      playBtn.src = 'next.png';
-      playBtn.onclick = function() {
-        window.location.href = 'game.html';
+      runTypewriter('textBox', 'Hey bestie, get ready ');
+
+      const btn = document.getElementById('play-btn');
+      btn.style.animation = 'none';
+      btn.innerHTML = '&#9654;';
+      btn.classList.add('next-btn');
+      btn.onclick = function() {
+        playSound('click');
+        window.location.href = 'character-select.html';
       };
     }
   </script>
-  
-  <!-- Footer -->
-  <div style="position: fixed; bottom: 13px; left: 50%; transform: translateX(-50%); color: white; font-family: 'NeuePixelSans', sans-serif; font-size: 14px; text-align: center; z-index: 100; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
-    hi it's Eden here ⋆ ˚｡⋆୨୧˚  <a href="https://www.instagram.com/edenmili/" target="_blank" style="color: #ffcedc; text-decoration: underline;">follow me on IG</a> to see the next project !! also say hi :)
+
+  <div class="global-footer">
+    made with love for Holdyn ⋆ ˚｡⋆୨୧˚  <a href="#" target="_blank" style="color: #ffcedc; text-decoration: underline;">follow Holdyn on IG</a>
   </div>
 </body>
 </html>

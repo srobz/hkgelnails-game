@@ -1,0 +1,44 @@
+HOLDYN NAIL STUDIO - PROGRESS SNAPSHOT
+========================================
+Date: Apr 21, 2026
+
+WHAT WAS DONE:
+- Completely rewrote the game from the broken firepit-fashion fork.
+- New clean files:
+  index.html              -> Welcome screen with typewriter prompt + sound hooks
+  character-select.html   -> Grid of 4 characters
+  studio.html             -> Nail studio: pick pattern, overlay on hands, save to IG story
+  js/game.js              -> All logic: config, audio, canvas save, state management
+  css/style.css           -> One clean stylesheet (no duplicates, no debug borders)
+  prompts.csv             -> Holdyn-themed nail prompts
+
+WHAT YOU NEED TO DO NEXT:
+1. DROP YOUR IMAGES into these folders and update js/game.js CONFIG paths:
+   assets/characters/char1-head.png  (and char2, char3, char4)
+   assets/characters/char1-hand.png (transparent nail cutouts - same size as hand image)
+   assets/nails/pattern1.png ... pattern6.png (transparent background nail art)
+   assets/studio-bg.png
+   assets/desk.png
+   assets/main-bg.png
+   assets/char-select-bg.png
+   assets/ig-story-bg.png
+   assets/logo.png
+   assets/continue.png
+   assets/play.png
+   assets/next.png
+
+2. DROP SOUND FILES into sounds/ and update js/game.js CONFIG.soundPaths:
+   sounds/click.mp3
+   sounds/enter-studio.mp3
+   sounds/holdyn-comment1.mp3 ... holdyn-comment5.mp3
+
+3. TWEAK POSITIONS in js/game.js CONFIG if the nails don't sit perfectly on the hands.
+   Look for headPos and handPos under each character entry.
+
+4. DELETE OLD FILES when you're ready (they're no longer used):
+   room-1.html, room-2.html, room-2 copy.html, game.html
+
+TO PREVIEW:
+- Open terminal in this folder and run: python3 -m http.server 8765
+- Then open http://localhost:8765 in your browser
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pick a Client - Holdyn's Nail Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <img src="assets/char_sel.png" alt="Background" class="bg-img">
+  <img src="assets/logo.png" alt="Logo" class="logo" onclick="window.location.href='index.html'" onerror="this.style.display='none';">
+
+  <div class="center-flex">
+    <h1 class="page-title">PICK YOUR CLIENT</h1>
+    <div class="character-grid" id="character-grid"></div>
+    <button class="btn start-btn" onclick="window.location.href='index.html'" style="margin-top:30px;">HOME</button>
+  </div>
+
+  <script src="js/game.js"></script>
+  <script>
+    window.addEventListener('load', () => renderCharacterGrid('#character-grid'));
+  </script>
+
+  <div class="global-footer">
+    made with love for Holdyn ⋆ ˚｡⋆୨୧˚  <a href="#" target="_blank" style="color: #ffcedc; text-decoration: underline;">follow Holdyn on IG</a>
+  </div>
+</body>
+</html>

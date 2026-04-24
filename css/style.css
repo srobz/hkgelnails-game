@@ -1,0 +1,385 @@
+/*
+  Holdyn's Nail Studio - Global Styles
+  ====================================
+  No duplicated rules. Everything is here.
+  If you want to change colors, search for CSS variables in :root.
+*/
+
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: url('../Comic Sans MS.ttf') format('truetype');
+}
+
+:root {
+  --bg-color: #1a0b2e;
+  --accent: #ea89ab;
+  --accent-hover: #ff5252;
+  --text-light: #ffffff;
+  --shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------- RESET ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-color);
+  font-family: 'Comic Sans MS', sans-serif;
+  color: var(--text-light);
+}
+
+/* Utility: full-screen background image */
+.bg-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---------- LAYOUT HELPERS ---------- */
+.center-flex {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* ---------- LOGO ---------- */
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  background: var(--accent);
+  color: var(--text-light);
+  border: none;
+  border-radius: 25px;
+  padding: 14px 28px;
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.btn:hover {
+  transform: scale(1.05);
+  background: var(--accent-hover);
+}
+.btn:active {
+  transform: scale(0.95);
+}
+
+.start-btn {
+  position: absolute;
+  top: 20px;
+  right: 150px;
+  z-index: 10;
+}
+
+/* ---------- FOOTER ---------- */
+.global-footer {
+  position: fixed;
+  bottom: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-light);
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  z-index: 100;
+  text-shadow: var(--shadow);
+}
+.global-footer a {
+  color: #ffcedc;
+  text-decoration: underline;
+}
+
+/* =========================================
+   INDEX / WELCOME PAGE
+   ========================================= */
+.welcome-logo {
+  width: 350px;
+  margin-bottom: 24px;
+  animation: bounce 1.2s infinite ease-in-out;
+  z-index: 3;
+  position: relative;
+}
+.logo-fallback {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 48px;
+  color: var(--text-light);
+  text-shadow: var(--shadow);
+  margin-bottom: 24px;
+  animation: bounce 1.2s infinite ease-in-out;
+  z-index: 3;
+  position: relative;
+  text-align: center;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-20px); }
+}
+
+.continue-btn {
+  cursor: pointer;
+  display: block;
+  z-index: 3;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.continue-btn:hover {
+  transform: scale(1.05);
+}
+.continue-text-btn {
+  background: var(--accent);
+  color: var(--text-light);
+  border: none;
+  border-radius: 25px;
+  padding: 16px 36px;
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+}
+.continue-text-btn:hover {
+  transform: scale(1.05);
+  background: var(--accent-hover);
+}
+
+.text-box-container {
+  display: none;
+  align-items: center;
+  gap: 15px;
+  z-index: 3;
+  position: relative;
+}
+
+.text-box {
+  background: #ffe7c6;
+  border: none;
+  border-radius: 0;
+  padding: 14px 24px;
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 16px;
+  color: #000;
+  width: 340px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.play-btn {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: block;
+  animation: wiggle 0.5s infinite;
+}
+.play-text-btn {
+  background: #ff009c;
+  color: var(--text-light);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 24px;
+  cursor: pointer;
+  display: block;
+  animation: wiggle 0.5s infinite;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  line-height: 1;
+}
+.play-text-btn:hover {
+  transform: scale(1.1);
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-5deg); }
+  75%      { transform: rotate(5deg); }
+}
+
+/* =========================================
+   CHARACTER SELECT PAGE
+   ========================================= */
+.page-title {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 32px;
+  color: var(--text-light);
+  text-shadow: var(--shadow);
+  margin-bottom: 40px;
+  text-align: center;
+  z-index: 3;
+  position: relative;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 600px;
+  width: 100%;
+  z-index: 3;
+  position: relative;
+}
+
+.character-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 16px;
+}
+.character-card:hover {
+  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.4);
+}
+.character-card img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 12px;
+}
+.character-label {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 16px;
+  color: var(--text-light);
+  text-shadow: var(--shadow);
+  text-align: center;
+}
+
+/* =========================================
+   NAIL STUDIO PAGE
+   ========================================= */
+.studio-scene {
+  position: relative;
+  width: 100vw;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Layers inside the studio scene */
+.layer-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.layer-desk {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  object-fit: contain;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.layer-head,
+.layer-hand,
+.layer-nails,
+.layer-character-combined {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+}
+.layer-head      { z-index: 2; }
+.layer-hand      { z-index: 6; }
+.layer-nails     { z-index: 7; opacity: 0; transition: opacity 0.3s ease; }
+.layer-character-combined { z-index: 3; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45%; }
+
+/* Swatch tray (sits on the desk) */
+.swatch-tray {
+  position: absolute;
+  bottom: 4%;
+  right: 4%;
+  display: flex;
+  gap: 12px;
+  z-index: 8;
+}
+
+.swatch {
+  width: 64px;
+  height: 64px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.swatch:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+.swatch.active {
+  border-color: var(--accent-hover);
+  transform: scale(1.1);
+  box-shadow: 0 0 12px var(--accent);
+}
+.swatch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Save button in studio */
+.save-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+/* Back button */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
