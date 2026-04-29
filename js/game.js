@@ -1,13 +1,13 @@
 /*
   Holdyn's Nail Studio - Shared Game Logic
   ========================================
-  HOW TO ADD YOUR IMAGES:
+  HOW TO ADD YOUR IMAGES: 
   1. Drop character headshots into: assets/characters/
   2. Drop hand shots (with transparent nails) into: assets/characters/
   3. Drop nail pattern PNGs into: assets/nails/
   4. Update the CONFIG paths below to match your filenames.
 
-  HOW TO ADD SOUNDS:
+  HOW TO ADDed SOUNDS:
   1. Drop MP3 files into: sounds/
   2. Update the CONFIG.soundPaths object below.
   3. The playSound() function will handle browser autoplay rules for you.

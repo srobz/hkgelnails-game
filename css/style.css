@@ -1,5 +1,5 @@
 /*
-  Holdyn's Nail Studio - Global Styles
+  Holdyn's Nail Studio - Global Styles yes
   ====================================
   No duplicated rules. Everything is here.
   If you want to change colors, search for CSS variables in :root.
@@ -383,3 +383,4 @@ html, body {
   right: 20px;
   z-index: 10;
 }
+

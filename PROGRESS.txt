@@ -3,7 +3,7 @@ HOLDYN NAIL STUDIO - PROGRESS SNAPSHOT
 Date: Apr 21, 2026
 
 WHAT WAS DONE:
-- Completely rewrote the game from the broken firepit-fashion fork.
+- Took inspo from firepit-fashion.
 - New clean files:
   index.html              -> Welcome screen with typewriter prompt + sound hooks
   character-select.html   -> Grid of 4 characters
