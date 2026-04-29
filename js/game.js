@@ -351,7 +351,7 @@ async function saveStory() {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    const mainText = `Just got my nails done and pussy popped by Holdyn! Which pattern should I try next?`;
+    const mainText = `Just got my nails done by Holdyn! Which pattern should I try next?`;
     const textX = canvas.width / 2;
     const textY = canvas.height - 260;
     const maxW = canvas.width - 120;
